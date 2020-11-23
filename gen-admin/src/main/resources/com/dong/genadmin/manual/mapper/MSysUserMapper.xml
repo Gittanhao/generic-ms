@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dong.genadmin.manual.mapper.MSysUserMapper">
+  <resultMap id="BaseResultMap" type="com.dong.genadmin.generator.model.SysUser">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="nick_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="avatar" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="salt" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="dept_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="create_by" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="last_update_by" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="last_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="del_flag" javaType="java.lang.Byte" jdbcType="TINYINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, nick_name, avatar, password, salt, email, mobile, status, dept_id, create_by, 
+    create_time, last_update_by, last_update_time, del_flag
+  </sql>
+
+  <select id="findPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from sys_user
+  </select>
+
+  <select id="findByName" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from sys_user
+    where name = #{name}
+  </select>
+
+</mapper>
