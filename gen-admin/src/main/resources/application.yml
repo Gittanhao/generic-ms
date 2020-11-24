@@ -17,7 +17,7 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/db_generic_ms?characterEncoding=utf-8
       username: root
-      password: 16050555108
+      password: root
       filters: stat,wall,log4j,config
       max-active: 100
       initial-size: 1
