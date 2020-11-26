@@ -7,6 +7,7 @@ import com.dong.gencore.page.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Set;
 
@@ -64,4 +65,22 @@ public class SysUserController {
         return HttpResult.ok(sysUserService.findUserRoles(userId));
     }
 
+    @PostMapping(value = "/longin")
+    public HttpResult longin(@RequestBody SysUser user) {
+        List<SysUser> users = sysUserService.findByName(user.getName());
+        if (users != null && users.size() > 0) {
+            return HttpResult.ok();
+        }
+        return HttpResult.error(9999, "用户不存在,请检查您的账号和密码");
+    }
+
+    @GetMapping(value = "/exportUsers")
+    public void exportUsers(HttpServletResponse response) {
+        sysUserService.exportUsers(response);
+    }
+
+    @GetMapping(value = "/findAllUsers")
+    public HttpResult findAllUsers() {
+        return HttpResult.ok(sysUserService.findAllUsers());
+    }
 }

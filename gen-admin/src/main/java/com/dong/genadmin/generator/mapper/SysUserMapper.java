@@ -2,6 +2,8 @@ package com.dong.genadmin.generator.mapper;
 
 import com.dong.genadmin.generator.model.SysUser;
 
+import java.util.List;
+
 public interface SysUserMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    List<SysUser> selectUsers();
 }

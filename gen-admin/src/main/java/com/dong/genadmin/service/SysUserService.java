@@ -4,6 +4,8 @@ import com.dong.genadmin.generator.model.SysUser;
 import com.dong.genadmin.generator.model.SysUserRole;
 import com.dong.gencore.service.CurdService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Set;
 
@@ -34,4 +36,16 @@ public interface SysUserService extends CurdService<SysUser> {
      * @return
      */
     List<SysUserRole> findUserRoles(Long userId);
+
+    /**
+     * 查询所有用户
+     * @param name
+     * @return
+     */
+    List<SysUser> findAllUsers();
+
+    /**
+     * 导出所有用户
+     */
+    void exportUsers(HttpServletResponse response);
 }
