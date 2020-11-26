@@ -95,18 +95,19 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public PageResult findPage(PageRequest pageRequest) {
-        return MybatisPageHelper.findPage(pageRequest, mSysUserMapper);
+        //这里也可以选择改MSysUserMapper的findPage where条件 del_flag 为 1
+        return MybatisPageHelper.findPage(pageRequest, sysUserMapper,"selectAllUsers",(byte)0);
     }
 
     @Override
     public List<SysUser> findAllUsers() {
-        return sysUserMapper.selectUsers();
+        return sysUserMapper.selectAllUsers((byte)0);
     }
 
     @Override
     public void exportUsers(HttpServletResponse response) {
 
-        List<SysUser> sysUsers = sysUserMapper.selectUsers();
+        List<SysUser> sysUsers = sysUserMapper.selectAllUsers((byte)0);
 
         if (sysUsers != null && sysUsers.size() > 0) {
             String fileName = "所有用户_" + DateTimeFormatter.ofPattern("yyyyMMdd").format(ZonedDateTime.now()) + ".xlsx";

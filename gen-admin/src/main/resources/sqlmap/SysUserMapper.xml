@@ -31,7 +31,7 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_user
+    update sys_user set del_flag = '-1'
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.dong.genadmin.generator.model.SysUser">
@@ -211,9 +211,9 @@
       del_flag = #{delFlag,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectUsers" resultMap="BaseResultMap">
+  <select id="selectAllUsers" parameterType="byte" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from sys_user
+    from sys_user where del_flag = #{del_flag}
   </select>
 </mapper>
