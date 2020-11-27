@@ -2,6 +2,7 @@ package com.dong.genadmin.service;
 
 import com.dong.genadmin.generator.model.SysUser;
 import com.dong.genadmin.generator.model.SysUserRole;
+import com.dong.gencore.page.PageRequest;
 import com.dong.gencore.service.CurdService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,5 +48,5 @@ public interface SysUserService extends CurdService<SysUser> {
     /**
      * 导出所有用户
      */
-    void exportUsers(HttpServletResponse response);
+    void exportUsers(HttpServletResponse response, PageRequest pageRequest);
 }

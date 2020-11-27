@@ -74,13 +74,13 @@ public class SysUserController {
         return HttpResult.error(9999, "用户不存在,请检查您的账号和密码");
     }
 
-    @GetMapping(value = "/exportUsers")
-    public void exportUsers(HttpServletResponse response) {
-        sysUserService.exportUsers(response);
+    @PostMapping(value = "/exportUsers")
+    public void exportUsers(HttpServletResponse response,@RequestBody PageRequest pageRequest) {
+        sysUserService.exportUsers(response,pageRequest);
     }
 
-    @GetMapping(value = "/findAllUsers")
-    public HttpResult findAllUsers() {
-        return HttpResult.ok(sysUserService.findAllUsers());
-    }
+//    @GetMapping(value = "/findAllUsers")
+//    public HttpResult findAllUsers() {
+//        return HttpResult.ok(sysUserService.findAllUsers());
+//    }
 }
