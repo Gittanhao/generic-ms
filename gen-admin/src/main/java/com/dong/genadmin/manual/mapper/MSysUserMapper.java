@@ -28,6 +28,13 @@ public interface MSysUserMapper {
     List<SysUser> findByName(String name);
 
     /**
+     * 根据名称查询用户
+     * @param id id
+     * @return
+     */
+    List<SysUser> findByid(Long id);
+
+    /**
      * 根据用户名查询用户权限
      * @param name 用户名
      * @return

@@ -38,6 +38,7 @@ import java.util.Set;
 @Service
 public class SysUserServiceImpl implements SysUserService {
 
+
     @Resource
     private SysUserMapper sysUserMapper;
     @Resource
@@ -50,6 +51,11 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public List<SysUser> findByName(String name) {
         return mSysUserMapper.findByName(name);
+    }
+
+    @Override
+    public List<SysUser> findByid(Long id) {
+        return mSysUserMapper.findByid(id);
     }
 
     @Override
@@ -112,6 +118,7 @@ public class SysUserServiceImpl implements SysUserService {
         List<SysUser> sysUsers = (List<SysUser>) result.getContent();
 
         if (sysUsers != null && sysUsers.size() > 0) {
+
             String fileName = "所有用户_" + DateTimeFormatter.ofPattern("yyyyMMdd").format(ZonedDateTime.now()) + ".xlsx";
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("信息表");

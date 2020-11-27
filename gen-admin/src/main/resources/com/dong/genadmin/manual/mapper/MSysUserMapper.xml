@@ -38,4 +38,11 @@
     where name = #{name}
   </select>
 
+  <select id="findByid" parameterType="Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from sys_user
+    where id = #{id}
+  </select>
+
 </mapper>

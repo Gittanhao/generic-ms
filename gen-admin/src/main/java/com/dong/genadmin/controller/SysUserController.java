@@ -28,6 +28,11 @@ public class SysUserController {
         return HttpResult.ok(sysUserService.findByName(name));
     }
 
+    @GetMapping(value = "/findByid")
+    public HttpResult findByid(@RequestParam Long id) {
+        return HttpResult.ok(sysUserService.findByid(id));
+    }
+
     @PostMapping(value = "/save")
     public HttpResult save(@RequestBody SysUser record) {
         return HttpResult.ok(sysUserService.save(record));

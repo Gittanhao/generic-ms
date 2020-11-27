@@ -25,6 +25,13 @@ public interface SysUserService extends CurdService<SysUser> {
     List<SysUser> findByName(String name);
 
     /**
+     * 根据id查询用户
+     * @param  id
+     * @return
+     */
+    List<SysUser> findByid(Long id);
+
+    /**
      * 根据用户名查询用户权限
      * @param name 用户名
      * @return
